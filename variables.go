@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"reflect"
 )
 
@@ -16,7 +17,7 @@ func main() {
 	// Function level variable declaration + initialization (= work ONLY inside of the function)
 	// Variables declared at fucntion level MUST be used (error otherwise)
 	//Function level variable overwrite Package level variable
-	name := "Yannick" //Name of the subscriber (Type String)
+	name := os.Getenv("USERNAME") //retrieve name of the windows session user (Type String)
 	//course := "Docker Deep Dive 2" //Couse being viewed (Type String)
 	module := 3.4  //Current position in course (Type float)
 	ptr := &module //declare pointer value of module directly
