@@ -9,7 +9,7 @@ func main() {
 	}
 
 	testmap["A"] = 100  //Update A value to 100
-	testmap["F"] = 1985 //add a new value to the map as F value doesn't exist in it yet
+	testmap["F"] = 1985 //add a new value dynamiccally to the map as F value doesn't exist in it yet
 	fmt.Println(testmap)
 
 	delete(testmap, "F") //delete BOTH key/value for F value
