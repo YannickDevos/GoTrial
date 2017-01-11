@@ -9,18 +9,33 @@ type Salutation struct {
 
 type Printer func(string)
 
-func Greet(salutation Salutation, do Printer, isFormal bool) {
-	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
+func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
+	for _, s := range salutation {
+		message, alternate := CreateMessage(s.Name, s.Greeting)
 
-	if prefix := GetPrefix(salutation.Name); isFormal {
-		do(prefix + message)
-	} else {
-		do(alternate)
+		//message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
+		/*	i := 0
+			for {
+				if i >= times {
+					break
+				}
+				if i%2 == 0 { //if number is disible by 2, it'll restart the loop without executing what's following
+					i++
+					continue
+				}*/
+
+		if prefix := GetPrefix(s.Name); isFormal {
+			do(prefix + message)
+		} else {
+			do(alternate)
+		}
+		//i++
 	}
-
 }
 
 func GetPrefix(name string) (prefix string) {
+
+	var prefixmap string string
 	switch {
 	case name == "Bob":
 		prefix = "Mr "
@@ -35,6 +50,7 @@ func GetPrefix(name string) (prefix string) {
 	return
 }
 
+/*
 func TypeSwitchTest(x interface{}) {
 	switch t := x.(type) {
 	case int:
@@ -47,6 +63,7 @@ func TypeSwitchTest(x interface{}) {
 		fmt.Println("unknown")
 	}
 }
+*/
 
 func CreateMessage(name, greeting string) (message string, alternate string) {
 	fmt.Println(len(greeting)) //Print the number of parameters in the Greeting's slice
